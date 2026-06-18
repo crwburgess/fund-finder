@@ -52,7 +52,7 @@ export function LandingScreen({ onStart }: LandingScreenProps) {
         </p>
         <div className="grid w-full max-w-3xl grid-cols-3 gap-6">
           {[
-            { step: "01", title: "Answer a few questions", desc: "Plain-language. No jargon, no forms." },
+            { step: "01", title: "Quick yes/no questions", desc: "Everything in plain-language. No jargon, no filling out forms." },
             { step: "02", title: "Get your exact match", desc: "The right organisation and specific programme for your situation." },
             { step: "03", title: "Know what to say", desc: "Clear talking points for your initial outreach." },
           ].map((item) => (
