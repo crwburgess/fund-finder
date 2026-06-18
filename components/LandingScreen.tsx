@@ -98,7 +98,7 @@ export function LandingScreen({ onStart }: LandingScreenProps) {
         <p className="mb-2 text-sm font-medium" style={{ color: "#0f625c" }}>
           Free to use · Takes about 2 minutes
         </p>
-        <p className="max-w-md text-[0.875rem]" style={{ color: "#5a5f66", lineHeight: 1.6 }}>
+        <p className="max-w-2xl text-[0.875rem]" style={{ color: "#5a5f66", lineHeight: 1.6 }}>
           I built this because I ran into this problem myself and figured others might too.
           <br />
           If you think I've missed a fund, or an organisation, please{" "}
