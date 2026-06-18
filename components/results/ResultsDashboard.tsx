@@ -1,9 +1,8 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import type { HistoryEntry, ResultNode } from "@/types";
 import { SiteHeader } from "@/components/SiteHeader";
-import type { GenerateScriptRequest } from "@/app/api/generate-script/route";
 
 interface ResultsDashboardProps {
   result: ResultNode;
@@ -11,54 +10,19 @@ interface ResultsDashboardProps {
   onReset: () => void;
 }
 
-type ScriptState =
-  | { status: "loading" }
-  | { status: "success"; text: string }
-  | { status: "error"; message: string };
-
 const orgConfig: Record<string, { logo: string; logoBg: string }> = {
   "Enterprise Ireland":            { logo: "/logo-ei-dark.png", logoBg: "#ffffff" },
   "Local Enterprise Office (LEO)": { logo: "/logo-leo.jpg",     logoBg: "#ffffff" },
 };
 
 export function ResultsDashboard({ result, history, onReset }: ResultsDashboardProps) {
-  const [scriptState, setScriptState] = useState<ScriptState>({ status: "loading" });
   const [copied, setCopied] = useState(false);
 
   const orgCfg = orgConfig[result.organisation];
   const logoSrc = orgCfg?.logo;
 
-  useEffect(() => {
-    const body: GenerateScriptRequest = {
-      fund: result.fund,
-      organisation: result.organisation,
-      agencyKeywords: result.agencyKeywords,
-      fundDescription: result.description,
-      history: history.map((h) => ({
-        question: h.question,
-        chosenLabel: h.chosenLabel,
-      })),
-    };
-
-    fetch("/api/generate-script", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(body),
-    })
-      .then(async (res) => {
-        const data = await res.json();
-        if (!res.ok) throw new Error(data.error ?? "Unknown error");
-        setScriptState({ status: "success", text: data.script });
-      })
-      .catch((err: Error) => {
-        setScriptState({ status: "error", message: err.message });
-      });
-  }, [result, history]);
-
   function handleCopy() {
-    const text = scriptState.status === "success" ? scriptState.text : "";
-    if (!text) return;
-    navigator.clipboard.writeText(text).then(() => {
+    navigator.clipboard.writeText(result.description).then(() => {
       setCopied(true);
       setTimeout(() => setCopied(false), 2000);
     });
@@ -113,8 +77,7 @@ export function ResultsDashboard({ result, history, onReset }: ResultsDashboardP
         <div className="w-full max-w-2xl">
           <div className="mb-6 flex items-center justify-between">
             <h2 className="font-bold text-lg" style={{ color: "#0f625c" }}>What to say when you make contact</h2>
-            {scriptState.status === "success" && (
-              <button onClick={handleCopy} className="btn-ghost" aria-label="Copy to clipboard">
+            <button onClick={handleCopy} className="btn-ghost" aria-label="Copy to clipboard">
                 {copied ? (
                   <>
                     <svg width="13" height="13" viewBox="0 0 13 13" fill="none" aria-hidden="true">
@@ -132,40 +95,13 @@ export function ResultsDashboard({ result, history, onReset }: ResultsDashboardP
                   </>
                 )}
               </button>
-            )}
           </div>
 
-          {scriptState.status === "loading" && (
-            <div
-              className="w-full rounded-lg p-6 flex flex-col gap-3"
-              style={{ backgroundColor: "#ffffff", border: "1px solid #e7eaee" }}
-              aria-label="Generating your personalised pitch…"
-              aria-busy="true"
-            >
-              <p className="text-[0.8125rem] mb-2" style={{ color: "#8c8b8b" }}>
-                Building your personalised pitch…
-              </p>
-              {[92, 85, 96, 0, 78, 88].map((w, i) =>
-                w === 0 ? <div key={i} className="h-2" /> : (
-                  <div key={i} className="h-3 rounded-sm animate-pulse" style={{ width: `${w}%`, backgroundColor: "#e7eaee" }} />
-                )
-              )}
-            </div>
-          )}
-
-          {scriptState.status === "error" && (
-            <div className="rounded-lg p-6" style={{ backgroundColor: "#ffffff", border: "1px solid #e7eaee" }}>
-              <p className="text-[0.875rem]" style={{ color: "#5a5f66" }}>{scriptState.message}</p>
-            </div>
-          )}
-
-          {scriptState.status === "success" && (
-            <div className="rounded-lg p-7" style={{ backgroundColor: "#ffffff", border: "1px solid #e7eaee" }}>
-              <p className="text-base italic" style={{ color: "#111111", lineHeight: 1.8 }}>
-                &ldquo;{scriptState.text}&rdquo;
-              </p>
-            </div>
-          )}
+          <div className="rounded-lg p-7" style={{ backgroundColor: "#ffffff", border: "1px solid #e7eaee" }}>
+            <p className="text-base italic" style={{ color: "#111111", lineHeight: 1.8 }}>
+              &ldquo;{result.description}&rdquo;
+            </p>
+          </div>
         </div>
       </section>
 
