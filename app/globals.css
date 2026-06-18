@@ -1,26 +1,163 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
+/* ─── Font token — inline so Tailwind's font-sans utility uses Next.js's
+       injected --font-roboto variable rather than a hardcoded stack ──── */
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: var(--font-roboto), -apple-system, BlinkMacSystemFont,
+    "Segoe UI", Helvetica, Arial, sans-serif;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* ─── CSS custom properties — defined in :root so var() resolves
+       everywhere (including hand-written classes below) ──────────────── */
+:root {
+  /* Palette — matched exactly to crwburgess.com */
+  --color-background:     #ffffff;
+  --color-surface:        #f2f2f2;
+  --color-border:         #e7eaee;
+
+  --color-text-primary:   #111111;
+  --color-text-secondary: #5a5f66;
+  --color-text-muted:     #8c8b8b;
+
+  --color-accent:         #0f625c;   /* deep teal — crwburgess primary */
+  --color-accent-dark:    #0a4a46;   /* hover/pressed teal */
+  --color-accent-fg:      #ffffff;   /* text on teal */
+}
+
+/* ─── Base ──────────────────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; }
+
+html {
+  background-color: var(--color-background);
+  color: var(--color-text-primary);
+  font-family: var(--font-sans);
+  font-size: 16px;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+  min-height: 100vh;
+  background-color: var(--color-background);
+  color: var(--color-text-primary);
+}
+
+h1, h2, h3, h4 {
+  line-height: 1.15;
+  font-weight: 700;
+  color: var(--color-text-primary);
+  margin: 0;
+}
+
+/* ─── Component classes ─────────────────────────────────────────────── */
+
+/* Eyebrow label */
+.label-eyebrow {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  margin: 0;
+}
+
+/* Option button — inactive */
+.btn-option {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 1.25rem 1.5rem;
+  border: 2px solid #d4d8dd;
+  border-radius: 10px;
+  background: var(--color-background);
+  color: var(--color-text-primary);
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  font-weight: 500;
+  text-align: left;
+  cursor: pointer;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.07);
+  transition: border-color 150ms ease, box-shadow 150ms ease, transform 120ms ease, background 150ms ease, color 150ms ease;
+}
+
+/* Arrow indicator — always visible, dims at rest */
+.btn-option::after {
+  content: "→";
+  font-size: 1.1rem;
+  color: var(--color-accent);
+  opacity: 0.4;
+  flex-shrink: 0;
+  margin-left: 1rem;
+  transition: opacity 150ms ease, transform 150ms ease;
+}
+
+.btn-option:hover {
+  border-color: var(--color-accent);
+  box-shadow: 0 6px 20px rgba(15, 98, 92, 0.14);
+  transform: translateY(-2px);
+  background: #f0faf9;
+}
+
+.btn-option:hover::after {
+  opacity: 1;
+  transform: translateX(3px);
+}
+
+/* Option button — selected */
+.btn-option-active {
+  background: var(--color-accent);
+  border-color: var(--color-accent);
+  color: var(--color-accent-fg);
+}
+
+/* Primary CTA — teal */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  background: var(--color-accent);
+  color: var(--color-accent-fg);
+  font-family: var(--font-sans);
+  font-size: 0.9375rem;
+  font-weight: 600;
+  border: 2px solid var(--color-accent);
+  border-radius: 4px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background 150ms ease, border-color 150ms ease;
+}
+
+.btn-primary:hover {
+  background: var(--color-accent-dark);
+  border-color: var(--color-accent-dark);
+}
+
+/* Ghost button */
+.btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  padding: 0.375rem 0;
+  background: transparent;
+  border: none;
+  color: var(--color-text-secondary);
+  font-family: var(--font-sans);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: color 150ms ease;
+}
+
+.btn-ghost:hover { color: var(--color-accent); }
+
+/* Divider */
+.divider {
+  border: none;
+  border-top: 1px solid var(--color-border);
 }
