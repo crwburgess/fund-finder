@@ -99,14 +99,15 @@ export function LandingScreen({ onStart }: LandingScreenProps) {
           Free to use · Takes about 2 minutes
         </p>
         <p className="max-w-md text-[0.875rem]" style={{ color: "#5a5f66", lineHeight: 1.6 }}>
-          I built it because I ran into this problem myself and figured others might too. If you think I've missed a fund, have an organisation I should include, or if I got the logic wrong,{" "}
+          I built this because I ran into this problem myself and figured others might too.
           <br />
+          If you think I've missed a fund, or an organisation, please{" "}
           <a
             href="mailto:chris@crwburgess.com"
             className="font-medium underline underline-offset-2"
             style={{ color: "#0f625c" }}
           >
-            I'd genuinely like to know.
+            let me know by email.
           </a>
         </p>
       </section>
