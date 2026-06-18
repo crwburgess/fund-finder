@@ -54,7 +54,7 @@ export function LandingScreen({ onStart }: LandingScreenProps) {
           {[
             { step: "01", title: "Answer a few questions", desc: "Plain-language. No jargon, no forms." },
             { step: "02", title: "Get your exact match", desc: "The right organisation and specific programme for your situation." },
-            { step: "03", title: "Know what to say", desc: "The exact language to use when you make contact." },
+            { step: "03", title: "Know what to say", desc: "Clear talking points for your initial outreach." },
           ].map((item) => (
             <div key={item.step} className="flex flex-col items-center gap-1.5">
               <p className="text-[0.6rem] font-bold tracking-[0.15em] uppercase" style={{ color: "#0f625c" }}>{item.step}</p>
@@ -99,7 +99,7 @@ export function LandingScreen({ onStart }: LandingScreenProps) {
           Free to use · Takes about 2 minutes
         </p>
         <p className="max-w-md text-[0.875rem]" style={{ color: "#5a5f66", lineHeight: 1.6 }}>
-          I built it because I ran into this problem myself and figured others might too. If you think I've missed a fund or got the logic wrong,{" "}
+          I built it because I ran into this problem myself and figured others might too. If you think I've missed a fund, have an organisation I should include, or if I got the logic wrong,{" "}
           <br />
           <a
             href="mailto:chris@crwburgess.com"
