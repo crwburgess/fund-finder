@@ -15,19 +15,17 @@ const orgConfig: Record<string, { logo: string; logoBg: string }> = {
   "Local Enterprise Office (LEO)": { logo: "/logo-leo.jpg",     logoBg: "#ffffff" },
 };
 
-function buildScript(history: HistoryEntry[], description: string): string {
+function buildBullets(history: HistoryEntry[], description: string): string[] {
   const answers = history.map((h) => {
-    // Strip leading "Yes — ", "No — " (and variants with en/em dash or hyphen)
     const label = h.chosenLabel.trim().replace(/^(yes|no)\s*[—–-]\s*/i, "");
     const sentence = label.charAt(0).toUpperCase() + label.slice(1);
     return sentence.endsWith(".") ? sentence : sentence + ".";
   });
 
-  // Append the fund's "what to say" description
   const desc = description.trim();
   const fundSentence = desc.endsWith(".") ? desc : desc + ".";
 
-  return [...answers, fundSentence].join(" ");
+  return [...answers, fundSentence];
 }
 
 export function ResultsDashboard({ result, history, onReset }: ResultsDashboardProps) {
@@ -35,10 +33,11 @@ export function ResultsDashboard({ result, history, onReset }: ResultsDashboardP
 
   const orgCfg = orgConfig[result.organisation];
   const logoSrc = orgCfg?.logo;
-  const script = buildScript(history, result.description);
+  const bullets = buildBullets(history, result.description);
 
   function handleCopy() {
-    navigator.clipboard.writeText(script).then(() => {
+    const text = bullets.map((b) => `• ${b}`).join("\n");
+    navigator.clipboard.writeText(text).then(() => {
       setCopied(true);
       setTimeout(() => setCopied(false), 2000);
     });
@@ -85,14 +84,14 @@ export function ResultsDashboard({ result, history, onReset }: ResultsDashboardP
         </a>
       </section>
 
-      {/* What to say when you make contact */}
+      {/* What to include in your application */}
       <section
         className="flex flex-col items-center px-6 py-14"
         style={{ backgroundColor: "#f2f2f2" }}
       >
         <div className="w-full max-w-2xl">
           <div className="mb-6 flex items-center justify-between">
-            <h2 className="font-bold text-lg" style={{ color: "#0f625c" }}>What to say when you make contact</h2>
+            <h2 className="font-bold text-lg" style={{ color: "#0f625c" }}>What to include in your application</h2>
             <button onClick={handleCopy} className="btn-ghost" aria-label="Copy to clipboard">
                 {copied ? (
                   <>
@@ -113,11 +112,14 @@ export function ResultsDashboard({ result, history, onReset }: ResultsDashboardP
               </button>
           </div>
 
-          <div className="rounded-lg p-7" style={{ backgroundColor: "#ffffff", border: "1px solid #e7eaee" }}>
-            <p className="text-base italic" style={{ color: "#111111", lineHeight: 1.8 }}>
-              &ldquo;{script}&rdquo;
-            </p>
-          </div>
+          <ul className="rounded-lg p-7 flex flex-col gap-3" style={{ backgroundColor: "#ffffff", border: "1px solid #e7eaee" }}>
+            {bullets.map((bullet, i) => (
+              <li key={i} className="flex items-start gap-3">
+                <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full" style={{ backgroundColor: "#0f625c" }} aria-hidden="true" />
+                <span className="text-[0.9375rem]" style={{ color: "#111111", lineHeight: 1.6 }}>{bullet}</span>
+              </li>
+            ))}
+          </ul>
         </div>
       </section>
 
