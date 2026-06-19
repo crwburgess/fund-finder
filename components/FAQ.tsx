@@ -1,8 +1,9 @@
 "use client";
 
 import { useState } from "react";
+import type { ReactNode } from "react";
 
-const items = [
+const items: { q: string; a: ReactNode }[] = [
   {
     q: "Is this tool affiliated with Enterprise Ireland or LEO?",
     a: "No. This is an entirely independent tool and is not officially affiliated with or endorsed by Enterprise Ireland or the Local Enterprise Offices. Their logos are displayed purely to show you which official organisations host the funding initiatives that match your answers.",
@@ -21,7 +22,7 @@ const items = [
   },
   {
     q: "What if my unique business situation isn't covered?",
-    a: "Please email me. This is a community-minded tool, and your feedback is incredibly valuable. If the quick questionnaire didn't fit your business model, drop me a line so I can improve the logic for future founders.",
+    a: <>Please <a href="mailto:chris@crwburgess.com" className="font-medium underline underline-offset-2" style={{ color: "#0f625c" }}>email me</a>. This is a community-minded tool, and your feedback is incredibly valuable. If the quick questionnaire didn't fit your business model, drop me a line so I can improve the logic for future founders.</>,
   },
 ];
 
