@@ -17,7 +17,7 @@ const items = [
   },
   {
     q: "Why is this completely free? What's the catch?",
-    a: "There is no catch. This is a personal passion project. I ran into this exact confusing paperwork headache myself when looking for business funding, and I wanted to build a free utility to make life just a little bit easier for fellow Irish entrepreneurs.",
+    a: "There is no catch. This is a personal passion project. I found it confusing when I was trying to work out what was relevant to me, and I wanted to build a free utility to make life just a little bit easier for fellow entrepreneurs in Ireland.",
   },
   {
     q: "What if my unique business situation isn't covered?",
