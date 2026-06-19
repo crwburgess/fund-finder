@@ -95,27 +95,6 @@ export function LandingScreen({ onStart }: LandingScreenProps) {
       {/* ── FAQ ───────────────────────────────────────────────────── */}
       <FAQ />
 
-      {/* ── Note ──────────────────────────────────────────────────── */}
-      <section
-        className="flex flex-1 flex-col items-center justify-center px-8 text-center"
-        style={{ backgroundColor: "#ffffff" }}
-      >
-        <p className="mb-2 text-sm font-medium" style={{ color: "#0f625c" }}>
-          Free to use · Takes about 2 minutes
-        </p>
-        <p className="max-w-2xl text-[0.875rem]" style={{ color: "#5a5f66", lineHeight: 1.6 }}>
-          I built this because I ran into this problem myself and figured others might too.
-          <br />
-          If you think I've missed a fund, or an organisation, please{" "}
-          <a
-            href="mailto:chris@crwburgess.com"
-            className="font-medium underline underline-offset-2"
-            style={{ color: "#0f625c" }}
-          >
-            let me know by email.
-          </a>
-        </p>
-      </section>
 
     </div>
   );
