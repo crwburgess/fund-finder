@@ -9,11 +9,11 @@ interface LandingScreenProps {
 
 export function LandingScreen({ onStart }: LandingScreenProps) {
   return (
-    <div className="flex flex-col flex-1">
+    <div className="flex flex-col">
 
       {/* ── Hero ─────────────────────────────────────────────────── */}
       <section
-        className="flex flex-1 flex-col items-center justify-center px-8 text-center"
+        className="flex flex-col items-center justify-center px-8 py-24 text-center"
         style={{ backgroundColor: "#0f625c" }}
       >
         <h1
@@ -28,14 +28,14 @@ export function LandingScreen({ onStart }: LandingScreenProps) {
           Irish business funding, simplified.
         </h1>
         <p
-          className="mt-3 max-w-xl text-lg"
+          className="mt-4 max-w-xl text-lg"
           style={{ color: "rgba(255,255,255,0.8)", lineHeight: 1.5 }}
         >
           Answer a few questions to find the right financing for your business.
         </p>
         <button
           onClick={onStart}
-          className="mt-7 flex items-center gap-2.5 rounded-full px-8 py-3 text-base font-semibold transition-all hover:scale-105"
+          className="mt-8 flex items-center gap-2.5 rounded-full px-8 py-3.5 text-base font-semibold transition-all hover:scale-105"
           style={{ backgroundColor: "#ffffff", color: "#0f625c", boxShadow: "0 4px 20px rgba(0,0,0,0.2)" }}
         >
           Get Started
@@ -50,28 +50,28 @@ export function LandingScreen({ onStart }: LandingScreenProps) {
 
       {/* ── How it works ─────────────────────────────────────────── */}
       <section
-        className="flex flex-1 flex-col items-center justify-center px-8 text-center"
+        className="flex flex-col items-center px-8 py-20 text-center"
         style={{ backgroundColor: "#ffffff" }}
       >
-        <p className="mb-6 text-[0.7rem] font-bold uppercase tracking-[0.15em]" style={{ color: "#8c8b8b" }}>
+        <p className="mb-12 text-[0.7rem] font-bold uppercase tracking-[0.15em]" style={{ color: "#8c8b8b" }}>
           How it works
         </p>
-        <div className="grid w-full max-w-3xl grid-cols-3 gap-6">
+        <div className="grid w-full max-w-3xl grid-cols-3 gap-10">
           {[
             { step: "01", icon: <MessageCircleQuestion size={22} color="#0f625c" />, title: "Quick yes/no questions", desc: "Everything in plain-language. No jargon, no filling out forms." },
             { step: "02", icon: <Target size={22} color="#0f625c" />, title: "Get your exact match", desc: "The right organisation and specific programme for your situation." },
             { step: "03", icon: <MessageSquareText size={22} color="#0f625c" />, title: "Know what to say", desc: "Clear talking points for your initial outreach." },
           ].map((item) => (
-            <div key={item.step} className="flex flex-col items-center gap-2">
+            <div key={item.step} className="flex flex-col items-center gap-3">
               <div
-                className="flex h-12 w-12 items-center justify-center rounded-full mb-1"
+                className="flex h-12 w-12 items-center justify-center rounded-full"
                 style={{ backgroundColor: "rgba(15, 98, 92, 0.08)" }}
               >
                 {item.icon}
               </div>
               <p className="text-[0.6rem] font-bold tracking-[0.15em] uppercase" style={{ color: "#0f625c" }}>{item.step}</p>
-              <p className="font-semibold text-[0.9rem]" style={{ color: "#111111" }}>{item.title}</p>
-              <p className="text-[0.8125rem]" style={{ color: "#5a5f66", lineHeight: 1.5 }}>{item.desc}</p>
+              <p className="font-semibold text-[0.9375rem]" style={{ color: "#111111" }}>{item.title}</p>
+              <p className="text-sm" style={{ color: "#5a5f66", lineHeight: 1.6 }}>{item.desc}</p>
             </div>
           ))}
         </div>
@@ -79,24 +79,24 @@ export function LandingScreen({ onStart }: LandingScreenProps) {
 
       {/* ── Logos ─────────────────────────────────────────────────── */}
       <section
-        className="flex flex-col items-center justify-center px-8 text-center"
-        style={{ backgroundColor: "#f2f2f2", flex: 2 }}
+        className="flex flex-col items-center px-8 py-16 text-center"
+        style={{ backgroundColor: "#f2f2f2" }}
       >
-        <p className="mb-5 text-[0.7rem] font-bold uppercase tracking-[0.15em]" style={{ color: "#8c8b8b" }}>
+        <p className="mb-8 text-[0.7rem] font-bold uppercase tracking-[0.15em]" style={{ color: "#8c8b8b" }}>
           Covers funding initiatives from
         </p>
-        <div className="flex flex-wrap items-center justify-center gap-5">
+        <div className="flex flex-wrap items-center justify-center gap-6">
           {[
             { logo: "/logo-ei-dark.png", alt: "Enterprise Ireland" },
             { logo: "/logo-leo.jpg",     alt: "Local Enterprise Office" },
           ].map((item) => (
             <div
               key={item.alt}
-              className="flex h-12 items-center justify-center rounded-xl px-6"
+              className="flex h-14 items-center justify-center rounded-xl px-8"
               style={{ backgroundColor: "#ffffff", border: "1px solid #e7eaee", boxShadow: "0 2px 8px rgba(0,0,0,0.05)" }}
             >
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src={item.logo} alt={item.alt} style={{ height: "28px", width: "auto", objectFit: "contain" }} />
+              <img src={item.logo} alt={item.alt} style={{ height: "32px", width: "auto", objectFit: "contain" }} />
             </div>
           ))}
         </div>
@@ -104,7 +104,6 @@ export function LandingScreen({ onStart }: LandingScreenProps) {
 
       {/* ── FAQ ───────────────────────────────────────────────────── */}
       <FAQ />
-
 
     </div>
   );
