@@ -16,9 +16,9 @@ const orgConfig: Record<string, { logo: string; logoBg: string }> = {
 };
 
 function buildScript(history: HistoryEntry[], description: string): string {
-  // Capitalise first letter of each answer and ensure it ends with a full stop
   const answers = history.map((h) => {
-    const label = h.chosenLabel.trim();
+    // Strip leading "Yes — ", "No — " (and variants with en/em dash or hyphen)
+    const label = h.chosenLabel.trim().replace(/^(yes|no)\s*[—–-]\s*/i, "");
     const sentence = label.charAt(0).toUpperCase() + label.slice(1);
     return sentence.endsWith(".") ? sentence : sentence + ".";
   });
