@@ -1,5 +1,6 @@
 "use client";
 
+import { MessageCircleQuestion, Target, MessageSquareText } from "lucide-react";
 import { FAQ } from "./FAQ";
 
 interface LandingScreenProps {
@@ -57,11 +58,17 @@ export function LandingScreen({ onStart }: LandingScreenProps) {
         </p>
         <div className="grid w-full max-w-3xl grid-cols-3 gap-6">
           {[
-            { step: "01", title: "Quick yes/no questions", desc: "Everything in plain-language. No jargon, no filling out forms." },
-            { step: "02", title: "Get your exact match", desc: "The right organisation and specific programme for your situation." },
-            { step: "03", title: "Know what to say", desc: "Clear talking points for your initial outreach." },
+            { step: "01", icon: <MessageCircleQuestion size={22} color="#0f625c" />, title: "Quick yes/no questions", desc: "Everything in plain-language. No jargon, no filling out forms." },
+            { step: "02", icon: <Target size={22} color="#0f625c" />, title: "Get your exact match", desc: "The right organisation and specific programme for your situation." },
+            { step: "03", icon: <MessageSquareText size={22} color="#0f625c" />, title: "Know what to say", desc: "Clear talking points for your initial outreach." },
           ].map((item) => (
-            <div key={item.step} className="flex flex-col items-center gap-1.5">
+            <div key={item.step} className="flex flex-col items-center gap-2">
+              <div
+                className="flex h-12 w-12 items-center justify-center rounded-full mb-1"
+                style={{ backgroundColor: "rgba(15, 98, 92, 0.08)" }}
+              >
+                {item.icon}
+              </div>
               <p className="text-[0.6rem] font-bold tracking-[0.15em] uppercase" style={{ color: "#0f625c" }}>{item.step}</p>
               <p className="font-semibold text-[0.9rem]" style={{ color: "#111111" }}>{item.title}</p>
               <p className="text-[0.8125rem]" style={{ color: "#5a5f66", lineHeight: 1.5 }}>{item.desc}</p>
