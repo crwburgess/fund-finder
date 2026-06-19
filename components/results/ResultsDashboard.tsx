@@ -15,12 +15,17 @@ const orgConfig: Record<string, { logo: string; logoBg: string }> = {
   "Local Enterprise Office (LEO)": { logo: "/logo-leo.jpg",     logoBg: "#ffffff" },
 };
 
+const MENTOR_DESCRIPTION =
+  "The Mentor Programme is designed to match up the knowledge, skills, insights and entrepreneurial capability of experienced business practitioners with small business owner/managers who need practical and strategic one to one advice and guidance. The mentor contributes independent, informed observation and advice to aid decision making.";
+
 function buildBullets(history: HistoryEntry[]): string[] {
-  return history.map((h) => {
-    const label = h.chosenLabel.trim().replace(/^(yes|no)\s*[—–-]\s*/i, "");
-    const sentence = label.charAt(0).toUpperCase() + label.slice(1);
-    return sentence.endsWith(".") ? sentence : sentence + ".";
-  });
+  return history
+    .filter((h) => h.chosenLabel.trim().toLowerCase() !== "i'm not sure")
+    .map((h) => {
+      const label = h.chosenLabel.trim().replace(/^(yes|no)\s*[—–-]\s*/i, "");
+      const sentence = label.charAt(0).toUpperCase() + label.slice(1);
+      return sentence.endsWith(".") ? sentence : sentence + ".";
+    });
 }
 
 export function ResultsDashboard({ result, history, onReset }: ResultsDashboardProps) {
@@ -28,6 +33,7 @@ export function ResultsDashboard({ result, history, onReset }: ResultsDashboardP
 
   const orgCfg = orgConfig[result.organisation];
   const logoSrc = orgCfg?.logo;
+  const arrivedViaNotSure = history[history.length - 1]?.chosenLabel.trim().toLowerCase() === "i'm not sure";
   const bullets = buildBullets(history);
 
   function handleCopy() {
@@ -126,14 +132,20 @@ export function ResultsDashboard({ result, history, onReset }: ResultsDashboardP
               <p className="text-[0.6875rem] font-bold uppercase tracking-widest" style={{ color: "#8c8b8b" }}>
                 Why you qualify
               </p>
-              <ul className="flex flex-col gap-2.5">
-                {bullets.map((bullet, i) => (
-                  <li key={i} className="flex items-start gap-3">
-                    <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full" style={{ backgroundColor: "#0f625c" }} aria-hidden="true" />
-                    <span className="text-[0.9375rem]" style={{ color: "#111111", lineHeight: 1.6 }}>{bullet}</span>
-                  </li>
-                ))}
-              </ul>
+              {arrivedViaNotSure ? (
+                <p className="text-[0.9375rem]" style={{ color: "#111111", lineHeight: 1.6 }}>
+                  {MENTOR_DESCRIPTION}
+                </p>
+              ) : (
+                <ul className="flex flex-col gap-2.5">
+                  {bullets.map((bullet, i) => (
+                    <li key={i} className="flex items-start gap-3">
+                      <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full" style={{ backgroundColor: "#0f625c" }} aria-hidden="true" />
+                      <span className="text-[0.9375rem]" style={{ color: "#111111", lineHeight: 1.6 }}>{bullet}</span>
+                    </li>
+                  ))}
+                </ul>
+              )}
             </div>
 
           </div>
