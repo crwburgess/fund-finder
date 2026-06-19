@@ -15,14 +15,30 @@ const orgConfig: Record<string, { logo: string; logoBg: string }> = {
   "Local Enterprise Office (LEO)": { logo: "/logo-leo.jpg",     logoBg: "#ffffff" },
 };
 
+function buildScript(history: HistoryEntry[], description: string): string {
+  // Capitalise first letter of each answer and ensure it ends with a full stop
+  const answers = history.map((h) => {
+    const label = h.chosenLabel.trim();
+    const sentence = label.charAt(0).toUpperCase() + label.slice(1);
+    return sentence.endsWith(".") ? sentence : sentence + ".";
+  });
+
+  // Append the fund's "what to say" description
+  const desc = description.trim();
+  const fundSentence = desc.endsWith(".") ? desc : desc + ".";
+
+  return [...answers, fundSentence].join(" ");
+}
+
 export function ResultsDashboard({ result, history, onReset }: ResultsDashboardProps) {
   const [copied, setCopied] = useState(false);
 
   const orgCfg = orgConfig[result.organisation];
   const logoSrc = orgCfg?.logo;
+  const script = buildScript(history, result.description);
 
   function handleCopy() {
-    navigator.clipboard.writeText(result.description).then(() => {
+    navigator.clipboard.writeText(script).then(() => {
       setCopied(true);
       setTimeout(() => setCopied(false), 2000);
     });
@@ -99,7 +115,7 @@ export function ResultsDashboard({ result, history, onReset }: ResultsDashboardP
 
           <div className="rounded-lg p-7" style={{ backgroundColor: "#ffffff", border: "1px solid #e7eaee" }}>
             <p className="text-base italic" style={{ color: "#111111", lineHeight: 1.8 }}>
-              &ldquo;{result.description}&rdquo;
+              &ldquo;{script}&rdquo;
             </p>
           </div>
         </div>
