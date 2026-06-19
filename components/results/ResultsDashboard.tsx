@@ -31,7 +31,7 @@ export function ResultsDashboard({ result, history, onReset }: ResultsDashboardP
   const bullets = buildBullets(history);
 
   function handleCopy() {
-    const text = bullets.map((b) => `• ${b}`).join("\n");
+    const text = `What you need\n${result.description}\n\nWhy you qualify\n${bullets.map((b) => `• ${b}`).join("\n")}`;
     navigator.clipboard.writeText(text).then(() => {
       setCopied(true);
       setTimeout(() => setCopied(false), 2000);
@@ -107,14 +107,36 @@ export function ResultsDashboard({ result, history, onReset }: ResultsDashboardP
               </button>
           </div>
 
-          <ul className="rounded-lg p-7 flex flex-col gap-3" style={{ backgroundColor: "#ffffff", border: "1px solid #e7eaee" }}>
-            {bullets.map((bullet, i) => (
-              <li key={i} className="flex items-start gap-3">
-                <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full" style={{ backgroundColor: "#0f625c" }} aria-hidden="true" />
-                <span className="text-[0.9375rem]" style={{ color: "#111111", lineHeight: 1.6 }}>{bullet}</span>
-              </li>
-            ))}
-          </ul>
+          <div className="rounded-lg p-7 flex flex-col gap-8" style={{ backgroundColor: "#ffffff", border: "1px solid #e7eaee" }}>
+
+            {/* What you need */}
+            <div className="flex flex-col gap-3">
+              <p className="text-[0.6875rem] font-bold uppercase tracking-widest" style={{ color: "#8c8b8b" }}>
+                What you need
+              </p>
+              <p className="text-[0.9375rem]" style={{ color: "#111111", lineHeight: 1.6 }}>
+                {result.description}
+              </p>
+            </div>
+
+            <hr style={{ border: "none", borderTop: "1px solid #e7eaee" }} />
+
+            {/* Why you qualify */}
+            <div className="flex flex-col gap-3">
+              <p className="text-[0.6875rem] font-bold uppercase tracking-widest" style={{ color: "#8c8b8b" }}>
+                Why you qualify
+              </p>
+              <ul className="flex flex-col gap-2.5">
+                {bullets.map((bullet, i) => (
+                  <li key={i} className="flex items-start gap-3">
+                    <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full" style={{ backgroundColor: "#0f625c" }} aria-hidden="true" />
+                    <span className="text-[0.9375rem]" style={{ color: "#111111", lineHeight: 1.6 }}>{bullet}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+          </div>
         </div>
       </section>
 
