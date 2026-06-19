@@ -15,17 +15,12 @@ const orgConfig: Record<string, { logo: string; logoBg: string }> = {
   "Local Enterprise Office (LEO)": { logo: "/logo-leo.jpg",     logoBg: "#ffffff" },
 };
 
-function buildBullets(history: HistoryEntry[], description: string): string[] {
-  const answers = history.map((h) => {
+function buildBullets(history: HistoryEntry[]): string[] {
+  return history.map((h) => {
     const label = h.chosenLabel.trim().replace(/^(yes|no)\s*[—–-]\s*/i, "");
     const sentence = label.charAt(0).toUpperCase() + label.slice(1);
     return sentence.endsWith(".") ? sentence : sentence + ".";
   });
-
-  const desc = description.trim();
-  const fundSentence = desc.endsWith(".") ? desc : desc + ".";
-
-  return [...answers, fundSentence];
 }
 
 export function ResultsDashboard({ result, history, onReset }: ResultsDashboardProps) {
@@ -33,7 +28,7 @@ export function ResultsDashboard({ result, history, onReset }: ResultsDashboardP
 
   const orgCfg = orgConfig[result.organisation];
   const logoSrc = orgCfg?.logo;
-  const bullets = buildBullets(history, result.description);
+  const bullets = buildBullets(history);
 
   function handleCopy() {
     const text = bullets.map((b) => `• ${b}`).join("\n");
