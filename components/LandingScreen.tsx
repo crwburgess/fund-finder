@@ -1,5 +1,7 @@
 "use client";
 
+import { FAQ } from "./FAQ";
+
 interface LandingScreenProps {
   onStart: () => void;
 }
@@ -89,6 +91,9 @@ export function LandingScreen({ onStart }: LandingScreenProps) {
           ))}
         </div>
       </section>
+
+      {/* ── FAQ ───────────────────────────────────────────────────── */}
+      <FAQ />
 
       {/* ── Note ──────────────────────────────────────────────────── */}
       <section
