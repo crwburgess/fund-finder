@@ -44,7 +44,7 @@ export function LandingScreen({ onStart }: LandingScreenProps) {
           </svg>
         </button>
         <p className="mt-4 text-sm" style={{ color: "rgba(255,255,255,0.75)" }}>
-          Free to use · Takes about 2 minutes
+          Free to use · No personally identifiable information · Takes about 2 minutes
         </p>
       </section>
 
