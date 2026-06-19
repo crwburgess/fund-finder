@@ -383,7 +383,7 @@ export const TREE: Record<string, TreeNode> = {
     organisation: "Local Enterprise Office (LEO)",
     fund: "Training / Mentoring",
     description:
-      "We need expert advice or training to strengthen our business strategy, financial planning, marketing, or operational capabilities before pursuing funding.",
+      "Based on your answers, the LEO Mentor Programme is the right starting point. A mentor will work with you one-to-one to help clarify your situation, strengthen your thinking, and identify the right funding path for your business.",
     url: "https://www.localenterprise.ie/Discover-Business-Supports/Training-Programme/",
     agencyKeywords: ["business strategy", "financial planning", "marketing", "operational capabilities", "mentoring", "advisory"],
   },
