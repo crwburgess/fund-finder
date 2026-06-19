@@ -55,19 +55,10 @@ export function QuestionStep({ node, stepNumber, canGoBack, onSelect, onBack }: 
           </button>
         ))}
 
-        {/* Don't know — always present, routes to LEO mentoring */}
+        {/* Don't know — same style as other options */}
         <button
           onClick={() => onSelect("I'm not sure", "result_training_mentoring")}
-          className="mt-2 w-full py-3 text-[0.875rem] transition-colors"
-          style={{
-            background: "none",
-            border: "none",
-            color: "var(--color-text-muted)",
-            cursor: "pointer",
-            textDecoration: "underline",
-            textDecorationColor: "var(--color-border)",
-            textUnderlineOffset: "3px",
-          }}
+          className="btn-option"
           aria-label="I'm not sure"
         >
           I&apos;m not sure
