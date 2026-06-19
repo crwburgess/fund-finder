@@ -79,8 +79,8 @@ export function LandingScreen({ onStart }: LandingScreenProps) {
 
       {/* ── Logos ─────────────────────────────────────────────────── */}
       <section
-        className="flex flex-1 flex-col items-center justify-center px-8 text-center"
-        style={{ backgroundColor: "#f2f2f2" }}
+        className="flex flex-col items-center justify-center px-8 text-center"
+        style={{ backgroundColor: "#f2f2f2", flex: 2 }}
       >
         <p className="mb-5 text-[0.7rem] font-bold uppercase tracking-[0.15em]" style={{ color: "#8c8b8b" }}>
           Covers funding initiatives from
