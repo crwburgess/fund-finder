@@ -42,6 +42,9 @@ export function LandingScreen({ onStart }: LandingScreenProps) {
             <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
           </svg>
         </button>
+        <p className="mt-4 text-sm" style={{ color: "rgba(255,255,255,0.75)" }}>
+          Free to use · Takes about 2 minutes
+        </p>
       </section>
 
       {/* ── How it works ─────────────────────────────────────────── */}
