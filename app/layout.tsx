@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Roboto } from "next/font/google";
 import { SiteFooter } from "@/components/SiteFooter";
+import { LanguageProvider } from "@/lib/LanguageContext";
 import "./globals.css";
 
 const roboto = Roboto({
@@ -23,8 +24,10 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${roboto.variable} h-full antialiased`}>
       <body className="min-h-full flex flex-col">
-        {children}
-        <SiteFooter />
+        <LanguageProvider>
+          {children}
+          <SiteFooter />
+        </LanguageProvider>
       </body>
     </html>
   );

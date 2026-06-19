@@ -2,17 +2,22 @@
 
 import { useState } from "react";
 import type { QuestionNode } from "@/types";
+import { t } from "@/lib/translations";
 
 interface QuestionStepProps {
   node: QuestionNode;
   stepNumber: number;
   canGoBack: boolean;
+  language: "en" | "ga";
   onSelect: (chosenLabel: string, nextNodeId: string) => void;
   onBack: () => void;
 }
 
-export function QuestionStep({ node, stepNumber, canGoBack, onSelect, onBack }: QuestionStepProps) {
+export function QuestionStep({ node, stepNumber, canGoBack, language, onSelect, onBack }: QuestionStepProps) {
   const [hovered, setHovered] = useState<string | null>(null);
+  const tr = t[language];
+
+  const question = language === "ga" && node.questionGa ? node.questionGa : node.question;
 
   return (
     <div className="flex w-full flex-col gap-10">
@@ -20,16 +25,16 @@ export function QuestionStep({ node, stepNumber, canGoBack, onSelect, onBack }: 
       {/* Top row: back on left, step on right */}
       <div className="flex items-center justify-between">
         {canGoBack ? (
-          <button className="btn-ghost" onClick={onBack} aria-label="Go back">
+          <button className="btn-ghost" onClick={onBack} aria-label={tr.back}>
             <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true" className="shrink-0">
               <path d="M9 2L4 7L9 12" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
             </svg>
-            Back
+            {tr.back}
           </button>
         ) : (
           <span />
         )}
-        <span className="label-eyebrow">Step {stepNumber}</span>
+        <span className="label-eyebrow">{tr.stepLabel(stepNumber)}</span>
       </div>
 
       {/* Question */}
@@ -37,31 +42,34 @@ export function QuestionStep({ node, stepNumber, canGoBack, onSelect, onBack }: 
         className="text-center font-bold"
         style={{ fontSize: "clamp(1.5rem, 4vw, 2.25rem)", lineHeight: 1.15, color: "var(--color-text-primary)" }}
       >
-        {node.question}
+        {question}
       </h1>
 
       {/* Options */}
       <div className="flex w-full flex-col gap-2" role="group" aria-label="Answer options">
-        {node.options.map((option) => (
-          <button
-            key={option.next}
-            onClick={() => onSelect(option.label, option.next)}
-            onMouseEnter={() => setHovered(option.next)}
-            onMouseLeave={() => setHovered(null)}
-            className="btn-option"
-            aria-label={option.label}
-          >
-            {option.label}
-          </button>
-        ))}
+        {node.options.map((option) => {
+          const label = language === "ga" && option.labelGa ? option.labelGa : option.label;
+          return (
+            <button
+              key={option.next}
+              onClick={() => onSelect(option.label, option.next)}
+              onMouseEnter={() => setHovered(option.next)}
+              onMouseLeave={() => setHovered(null)}
+              className="btn-option"
+              aria-label={label}
+            >
+              {label}
+            </button>
+          );
+        })}
 
-        {/* Don't know — same style as other options */}
+        {/* I'm not sure — same style, always last */}
         <button
           onClick={() => onSelect("I'm not sure", "result_training_mentoring")}
           className="btn-option"
-          aria-label="I'm not sure"
+          aria-label={tr.notSure}
         >
-          I&apos;m not sure
+          {tr.notSure}
         </button>
       </div>
 

@@ -4,8 +4,10 @@ export interface QuestionNode {
   id: NodeId;
   type: "question";
   question: string;
+  questionGa?: string;
   options: {
     label: string;
+    labelGa?: string;
     next: NodeId;
   }[];
 }
@@ -17,7 +19,6 @@ export interface ResultNode {
   fund: string;
   description: string;
   url: string;
-  /** Key vocabulary this agency values — passed to AI for outreach copy */
   agencyKeywords: string[];
 }
 

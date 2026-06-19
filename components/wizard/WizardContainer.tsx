@@ -5,6 +5,8 @@ import { TREE, ROOT_NODE_ID } from "@/lib/decisionTree";
 import type { HistoryEntry, ResultNode } from "@/types";
 import { QuestionStep } from "./QuestionStep";
 import { SiteHeader } from "@/components/SiteHeader";
+import { useLanguage } from "@/lib/LanguageContext";
+import { t } from "@/lib/translations";
 
 interface WizardContainerProps {
   onResult: (result: ResultNode, history: HistoryEntry[]) => void;
@@ -50,6 +52,9 @@ export function WizardContainer({ onResult }: WizardContainerProps) {
     setHistory((h) => h.slice(0, index));
   }
 
+  const { language } = useLanguage();
+  const tr = t[language];
+
   if (currentNode.type !== "question") return null;
 
   return (
@@ -73,6 +78,7 @@ export function WizardContainer({ onResult }: WizardContainerProps) {
             canGoBack={history.length > 0}
             onSelect={handleOptionSelect}
             onBack={handleBack}
+            language={language}
           />
         </div>
 
@@ -115,7 +121,7 @@ export function WizardContainer({ onResult }: WizardContainerProps) {
               {/* Final connector pointing up to current question */}
               <div className="w-px h-8" style={{ backgroundColor: "var(--color-border)" }} aria-hidden="true" />
               <p className="text-[0.6875rem] font-medium uppercase tracking-widest" style={{ color: "var(--color-text-muted)" }}>
-                Current question
+                {language === "ga" ? "Ceist reatha" : "Current question"}
               </p>
             </div>
           </div>

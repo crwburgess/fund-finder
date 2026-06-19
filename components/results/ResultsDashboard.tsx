@@ -3,6 +3,8 @@
 import { useState } from "react";
 import type { HistoryEntry, ResultNode } from "@/types";
 import { SiteHeader } from "@/components/SiteHeader";
+import { useLanguage } from "@/lib/LanguageContext";
+import { t } from "@/lib/translations";
 
 interface ResultsDashboardProps {
   result: ResultNode;
@@ -30,6 +32,8 @@ function buildBullets(history: HistoryEntry[]): string[] {
 
 export function ResultsDashboard({ result, history, onReset }: ResultsDashboardProps) {
   const [copied, setCopied] = useState(false);
+  const { language } = useLanguage();
+  const tr = t[language];
 
   const orgCfg = orgConfig[result.organisation];
   const logoSrc = orgCfg?.logo;
@@ -63,7 +67,7 @@ export function ResultsDashboard({ result, history, onReset }: ResultsDashboardP
           </div>
         )}
         <p className="mb-3 text-[0.75rem] font-semibold uppercase tracking-widest" style={{ color: "rgba(255,255,255,0.6)", letterSpacing: "0.1em" }}>
-          Recommended fund
+          {tr.recommendedFund}
         </p>
         <h1
           className="max-w-xl font-bold"
@@ -78,7 +82,7 @@ export function ResultsDashboard({ result, history, onReset }: ResultsDashboardP
           className="mt-8 flex items-center gap-2 rounded-full px-7 py-3 text-[0.9375rem] font-semibold transition-opacity hover:opacity-90"
           style={{ backgroundColor: "#ffffff", color: "#0f625c" }}
         >
-          View official fund page
+          {tr.viewFundPage}
           <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
             <path d="M2 10L10 2M10 2H4M10 2V8" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
           </svg>
@@ -92,14 +96,14 @@ export function ResultsDashboard({ result, history, onReset }: ResultsDashboardP
       >
         <div className="w-full max-w-2xl">
           <div className="mb-6 flex items-center justify-between">
-            <h2 className="font-bold text-lg" style={{ color: "#0f625c" }}>What to include in your application</h2>
+            <h2 className="font-bold text-lg" style={{ color: "#0f625c" }}>{tr.whatToInclude}</h2>
             <button onClick={handleCopy} className="btn-ghost" aria-label="Copy to clipboard">
                 {copied ? (
                   <>
                     <svg width="13" height="13" viewBox="0 0 13 13" fill="none" aria-hidden="true">
                       <path d="M2 6.5L5 9.5L11 3.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
                     </svg>
-                    Copied
+                    {tr.copied}
                   </>
                 ) : (
                   <>
@@ -107,7 +111,7 @@ export function ResultsDashboard({ result, history, onReset }: ResultsDashboardP
                       <rect x="4.5" y="1.5" width="7" height="9" rx="0.5" stroke="currentColor" strokeWidth="1.25" />
                       <path d="M4.5 3.5H2.5a1 1 0 0 0-1 1v7a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-1.5" stroke="currentColor" strokeWidth="1.25" strokeLinecap="round" />
                     </svg>
-                    Copy
+                    {tr.copy}
                   </>
                 )}
               </button>
@@ -118,7 +122,7 @@ export function ResultsDashboard({ result, history, onReset }: ResultsDashboardP
             {/* What you need */}
             <div className="flex flex-col gap-3">
               <p className="text-[0.6875rem] font-bold uppercase tracking-widest" style={{ color: "#8c8b8b" }}>
-                What you need
+                {tr.whatYouNeed}
               </p>
               <p className="text-[0.9375rem]" style={{ color: "#111111", lineHeight: 1.6 }}>
                 {result.description}
@@ -130,7 +134,7 @@ export function ResultsDashboard({ result, history, onReset }: ResultsDashboardP
             {/* Why you qualify */}
             <div className="flex flex-col gap-3">
               <p className="text-[0.6875rem] font-bold uppercase tracking-widest" style={{ color: "#8c8b8b" }}>
-                Why you qualify
+                {tr.whyYouQualify}
               </p>
               {arrivedViaNotSure ? (
                 <p className="text-[0.9375rem]" style={{ color: "#111111", lineHeight: 1.6 }}>
@@ -157,7 +161,7 @@ export function ResultsDashboard({ result, history, onReset }: ResultsDashboardP
         <section className="flex flex-col items-center px-6 py-14" style={{ backgroundColor: "#ffffff" }}>
           <div className="w-full max-w-2xl">
             <h2 className="mb-6 text-center font-bold text-lg" style={{ color: "#0f625c" }}>
-              Your answers
+              {tr.yourAnswers}
             </h2>
             <div className="flex flex-col">
               {history.map((entry, i) => (
