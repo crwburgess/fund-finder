@@ -28,13 +28,13 @@ export default function RootLayout({
         <LanguageProvider>
           {children}
           <SiteFooter />
+          <Script
+            data-goatcounter="https://iefundfinder.goatcounter.com/count"
+            async
+            src="//gc.zgo.at/count.js"
+            strategy="afterInteractive"
+          />
         </LanguageProvider>
-        <Script
-          data-goatcounter="https://iefundfinder.goatcounter.com/count"
-          async
-          src="//gc.zgo.at/count.js"
-          strategy="afterInteractive"
-        />
       </body>
     </html>
   );
