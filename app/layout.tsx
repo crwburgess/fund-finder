@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Roboto } from "next/font/google";
+import Script from "next/script";
 import { SiteFooter } from "@/components/SiteFooter";
 import { LanguageProvider } from "@/lib/LanguageContext";
 import "./globals.css";
@@ -28,6 +29,12 @@ export default function RootLayout({
           {children}
           <SiteFooter />
         </LanguageProvider>
+        <Script
+          data-goatcounter="https://iefundfinder.goatcounter.com/count"
+          async
+          src="//gc.zgo.at/count.js"
+          strategy="afterInteractive"
+        />
       </body>
     </html>
   );
