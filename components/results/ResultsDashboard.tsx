@@ -89,15 +89,17 @@ export function ResultsDashboard({ result, history, onReset }: ResultsDashboardP
         </a>
       </section>
 
-      {/* What to include in your application — hidden when I'm not sure was the only answer */}
-      {!(arrivedViaNotSure && bullets.length === 0) && <section
+      {/* What to include in your application */}
+      <section
         className="flex flex-col items-center px-6 py-14"
         style={{ backgroundColor: "#f2f2f2" }}
       >
         <div className="w-full max-w-2xl">
           <div className="mb-6 flex items-center justify-between">
-            <h2 className="font-bold text-lg" style={{ color: "#0f625c" }}>{tr.whatToInclude}</h2>
-            <button onClick={handleCopy} className="btn-ghost" aria-label="Copy to clipboard">
+            {!(arrivedViaNotSure && bullets.length === 0) && (
+              <h2 className="font-bold text-lg" style={{ color: "#0f625c" }}>{tr.whatToInclude}</h2>
+            )}
+            {!(arrivedViaNotSure && bullets.length === 0) && <button onClick={handleCopy} className="btn-ghost" aria-label="Copy to clipboard">
                 {copied ? (
                   <>
                     <svg width="13" height="13" viewBox="0 0 13 13" fill="none" aria-hidden="true">
@@ -114,7 +116,7 @@ export function ResultsDashboard({ result, history, onReset }: ResultsDashboardP
                     {tr.copy}
                   </>
                 )}
-              </button>
+              </button>}
           </div>
 
           <div className="rounded-lg p-7 flex flex-col gap-8" style={{ backgroundColor: "#ffffff", border: "1px solid #e7eaee" }}>
@@ -154,7 +156,7 @@ export function ResultsDashboard({ result, history, onReset }: ResultsDashboardP
 
           </div>
         </div>
-      </section>}
+      </section>
 
       {/* Your answers */}
       {history.length > 0 && (
