@@ -236,7 +236,7 @@ export const TREE: Record<string, TreeNode> = {
     organisation: "Enterprise Ireland",
     fund: "Pre-Seed Start Fund (PSSF)",
     description: "We have a Minimum Viable Product (MVP) and early customer validation. We are seeking a Convertible Loan Note to reach technical milestones.",
-    url: "https://www.enterprise-ireland.com/en/funding-supports/startups-early-stage-companies/pre-seed-start-fund/",
+    url: "https://www.enterprise-ireland.com/en/supports/pre-seed-start-fund",
     agencyKeywords: ["MVP", "early customer validation", "technical milestones", "convertible loan note", "export potential", "scalable model"],
   },
 
@@ -246,7 +246,7 @@ export const TREE: Record<string, TreeNode> = {
     organisation: "Enterprise Ireland",
     fund: "High Potential Start-Up (HPSU)",
     description: "We have commercial traction and protectable IP. We are ready for a co-funding investment to scale internationally.",
-    url: "https://www.enterprise-ireland.com/en/funding-supports/startups-early-stage-companies/high-potential-start-up-fund/",
+    url: "https://www.enterprise-ireland.com/en/innovative-hpsu-fund",
     agencyKeywords: ["commercial traction", "protectable IP", "co-funding", "scale internationally", "export-led job creation", "global markets"],
   },
 
@@ -256,7 +256,7 @@ export const TREE: Record<string, TreeNode> = {
     organisation: "Enterprise Ireland",
     fund: "GradStart",
     description: "We want to hire a recent graduate to help build capability in areas such as software development, engineering, data analysis, marketing, or business development.",
-    url: "https://www.enterprise-ireland.com/en/talent/gradstart/",
+    url: "https://www.enterprise-ireland.com/en/supports/grad-start",
     agencyKeywords: ["graduate talent", "capability building", "digital skills", "software development", "engineering"],
   },
 
@@ -266,17 +266,17 @@ export const TREE: Record<string, TreeNode> = {
     organisation: "Enterprise Ireland",
     fund: "Digital Discovery",
     description: "We want to develop a clear digital strategy and roadmap to identify how technologies such as AI, data analytics, automation, or new platforms could transform the business.",
-    url: "https://www.enterprise-ireland.com/en/innovation/digital-transformation/digital-discovery/",
+    url: "https://www.enterprise-ireland.com/en/supports/access-advice-digital-discovery",
     agencyKeywords: ["digital strategy", "technology roadmap", "AI", "data analytics", "automation", "digital transformation"],
   },
 
   result_agile_innovation: {
     id: "result_agile_innovation",
     type: "result",
-    organisation: "Enterprise Ireland",
+    organisation: "Local Enterprise Office (LEO)",
     fund: "Agile Innovation Fund",
     description: "We have a project budget under €300k and need to respond quickly to a market opportunity.",
-    url: "https://www.enterprise-ireland.com/en/innovation/agile-innovation-fund/",
+    url: "https://www.localenterprise.ie/discover-business-supports/research-development-and-innovation-support/agile-innovation-fund/agile-innovation-fund.html",
     agencyKeywords: ["agile", "fast-moving", "market opportunity", "competitive advantage", "innovation project"],
   },
 
@@ -286,7 +286,7 @@ export const TREE: Record<string, TreeNode> = {
     organisation: "Enterprise Ireland",
     fund: "R&D Fund",
     description: "This is a large-scale project aimed at a step-up in our company's overall research capability.",
-    url: "https://www.enterprise-ireland.com/en/innovation/research-and-development/",
+    url: "https://www.enterprise-ireland.com/en/supports/research-development-innovation-fund",
     agencyKeywords: ["research capability", "large-scale R&D", "step-change", "technical innovation", "competitiveness"],
   },
 
@@ -296,7 +296,7 @@ export const TREE: Record<string, TreeNode> = {
     organisation: "Enterprise Ireland",
     fund: "Data2Sustain (Test Before Invest)",
     description: "We want to test AI, data analytics, or digital technologies through pilot projects before committing to a larger innovation investment.",
-    url: "https://www.enterprise-ireland.com/en/innovation/digital-transformation/",
+    url: "https://data2sustain.ie/our-services/?filter=test",
     agencyKeywords: ["AI pilot", "data analytics", "test before invest", "digital technology", "innovation pilot"],
   },
 
@@ -306,7 +306,7 @@ export const TREE: Record<string, TreeNode> = {
     organisation: "Enterprise Ireland",
     fund: "Exploring Innovation",
     description: "We need to conduct a technical feasibility study to investigate disruptive technologies and evaluate project options through prototyping. This will allow us to stress-test our strategy, identify potential research partners, and perform a detailed commercial analysis before we commit to a full-scale R&D project.",
-    url: "https://www.enterprise-ireland.com/en/innovation/research-and-development/",
+    url: "https://www.enterprise-ireland.com/en/supports/exploring-innovation-grant",
     agencyKeywords: ["technical feasibility", "disruptive technologies", "prototyping", "research partners", "commercial analysis"],
   },
 
@@ -316,7 +316,7 @@ export const TREE: Record<string, TreeNode> = {
     organisation: "Local Enterprise Office (LEO)",
     fund: "Priming Grant",
     description: "We have recently started trading and need support for early business costs such as equipment, marketing, salaries, or operational setup to establish the business.",
-    url: "https://www.localenterprise.ie/Discover-Business-Supports/Grants/Priming-Grant/",
+    url: "https://www.localenterprise.ie/discover-business-supports/financial-supports/priming-grant/",
     agencyKeywords: ["recently started trading", "early business costs", "equipment", "local job creation", "community impact", "micro-enterprise"],
   },
 
@@ -326,7 +326,7 @@ export const TREE: Record<string, TreeNode> = {
     organisation: "Local Enterprise Office (LEO)",
     fund: "Priming Grant",
     description: "We are preparing to launch and need support for early business costs such as equipment, marketing, salaries, or operational setup to establish the business.",
-    url: "https://www.localenterprise.ie/Discover-Business-Supports/Grants/Priming-Grant/",
+    url: "https://www.localenterprise.ie/discover-business-supports/financial-supports/priming-grant/",
     agencyKeywords: ["preparing to launch", "early business costs", "equipment", "local job creation", "community impact", "micro-enterprise"],
   },
 
@@ -336,7 +336,7 @@ export const TREE: Record<string, TreeNode> = {
     organisation: "Local Enterprise Office (LEO)",
     fund: "Feasibility Grant",
     description: "We need to test whether this idea is technically and commercially viable. Funding will support market research, prototype development, technical validation, or feasibility studies before committing to launching the business.",
-    url: "https://www.localenterprise.ie/Discover-Business-Supports/Grants/Feasibility-Study-Grant/",
+    url: "https://www.localenterprise.ie/discover-business-supports/financial-supports/feasibility-grant/",
     agencyKeywords: ["feasibility", "market research", "prototype development", "technical validation", "commercial viability"],
   },
 
@@ -356,7 +356,7 @@ export const TREE: Record<string, TreeNode> = {
     organisation: "Local Enterprise Office (LEO)",
     fund: "Data2Sustain – EDIH Voucher Support",
     description: "We want to test AI, data analytics, or digital technologies through pilot projects before committing to a larger innovation investment.",
-    url: "https://www.localenterprise.ie/discover-business-supports/digital-supports/",
+    url: "https://data2sustain.ie/",
     agencyKeywords: ["AI pilot", "data analytics", "EDIH", "digital technologies", "test before invest", "digital transformation"],
   },
 
@@ -366,7 +366,7 @@ export const TREE: Record<string, TreeNode> = {
     organisation: "Local Enterprise Office (LEO)",
     fund: "Grow Digital Voucher",
     description: "We want to improve our digital capabilities by implementing systems such as e-commerce, CRM, automation tools, or cybersecurity solutions.",
-    url: "https://www.localenterprise.ie/discover-business-supports/digital-supports/",
+    url: "https://www.localenterprise.ie/growdigital/what-is-the-grow-digital-voucher-/",
     agencyKeywords: ["digital capabilities", "e-commerce", "CRM", "automation", "cybersecurity", "digital sales"],
   },
 
@@ -376,7 +376,7 @@ export const TREE: Record<string, TreeNode> = {
     organisation: "Local Enterprise Office (LEO)",
     fund: "Training / Mentoring",
     description: "Based on your answers, the LEO Mentor Programme is the right starting point. A mentor will work with you one-to-one to help clarify your situation, strengthen your thinking, and identify the right funding path for your business.",
-    url: "https://www.localenterprise.ie/Discover-Business-Supports/Training-Programme/",
+    url: "https://www.localenterprise.ie/discover-business-supports/mentoring/",
     agencyKeywords: ["business strategy", "financial planning", "marketing", "operational capabilities", "mentoring", "advisory"],
   },
 };
