@@ -5,6 +5,7 @@ export interface QuestionNode {
   type: "question";
   question: string;
   questionGa?: string;
+  hint?: { intro: string; bullets: string[] };
   options: {
     label: string;
     labelGa?: string;

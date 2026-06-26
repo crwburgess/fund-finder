@@ -89,8 +89,8 @@ export function ResultsDashboard({ result, history, onReset }: ResultsDashboardP
         </a>
       </section>
 
-      {/* What to include in your application */}
-      <section
+      {/* What to include in your application — hidden when I'm not sure was the only answer */}
+      {!(arrivedViaNotSure && bullets.length === 0) && <section
         className="flex flex-col items-center px-6 py-14"
         style={{ backgroundColor: "#f2f2f2" }}
       >
@@ -154,7 +154,7 @@ export function ResultsDashboard({ result, history, onReset }: ResultsDashboardP
 
           </div>
         </div>
-      </section>
+      </section>}
 
       {/* Your answers */}
       {history.length > 0 && (

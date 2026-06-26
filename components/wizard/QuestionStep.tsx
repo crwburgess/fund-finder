@@ -45,6 +45,24 @@ export function QuestionStep({ node, stepNumber, canGoBack, language, onSelect, 
         {question}
       </h1>
 
+      {/* Hint */}
+      {node.hint && (
+        <div
+          className="rounded-xl px-5 py-4 text-sm"
+          style={{ backgroundColor: "rgba(15,98,92,0.07)", border: "1px solid rgba(15,98,92,0.15)" }}
+        >
+          <p className="font-medium mb-2" style={{ color: "#0f625c" }}>{node.hint.intro}</p>
+          <ul className="flex flex-col gap-1">
+            {node.hint.bullets.map((b, i) => (
+              <li key={i} className="flex items-start gap-2">
+                <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full" style={{ backgroundColor: "#0f625c" }} />
+                <span style={{ color: "#3a5a58" }}>{b}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
+
       {/* Options */}
       <div className="flex w-full flex-col gap-2" role="group" aria-label="Answer options">
         {node.options.map((option) => {

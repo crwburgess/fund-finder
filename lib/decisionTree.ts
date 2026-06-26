@@ -32,6 +32,15 @@ export const TREE: Record<string, TreeNode> = {
     type: "question",
     question: "Could the business scale rapidly over the next few years?",
     questionGa: "An bhféadfadh an gnó scálú go tapa sna blianta beaga atá romhainn?",
+    hint: {
+      intro: "Indicators of rapid scaling may include:",
+      bullets: [
+        "Export potential beyond Ireland",
+        "Technology or IP creating competitive advantage",
+        "Ability to grow revenue quickly without staff increases",
+        "Potential to reach €1m+ revenue within a few years",
+      ],
+    },
     options: [
       { label: "Yes — we have export potential and can grow revenue quickly", labelGa: "Sea — tá acmhainn onnmhairiúcháin againn agus is féidir linn ioncam a fhás go tapa", next: "ei_employees" },
       { label: "No — growth will be steady and local", labelGa: "Níl — beidh fás cothrom agus áitiúil againn", next: "leo_trading" },
@@ -66,6 +75,15 @@ export const TREE: Record<string, TreeNode> = {
     type: "question",
     question: "Has your company already achieved meaningful commercial traction?",
     questionGa: "An bhfuil tarraingt tráchtála chiallmhar bainte amach ag do chuideachta cheana?",
+    hint: {
+      intro: "Commercial traction may include:",
+      bullets: [
+        "Paying customers",
+        "Signed contracts or strong pipeline",
+        "Proven product-market fit",
+        "Early revenue growth",
+      ],
+    },
     options: [
       { label: "Yes — we have paying customers, contracts, or early revenue", labelGa: "Sea — tá custaiméirí íocaíochta, conarthaí, nó ioncam luath againn", next: "ei_innovation" },
       { label: "No — we are pre-revenue or at idea stage", labelGa: "Níl — táimid réamh-ioncam nó ag céim smaoineamh", next: "ei_domestic_growth" },
@@ -77,6 +95,14 @@ export const TREE: Record<string, TreeNode> = {
     type: "question",
     question: "Is your project focused on developing new technology or a new product?",
     questionGa: "An bhfuil do thionscadal dírithe ar theicneolaíocht nua nó táirge nua a fhorbairt?",
+    hint: {
+      intro: "Innovation funding typically supports:",
+      bullets: [
+        "Development of new technology or products",
+        "Significant improvements to existing products",
+        "Technical R&D activities",
+      ],
+    },
     options: [
       { label: "Yes — we are building something new or significantly improved", labelGa: "Sea — táimid ag tógáil rud éigin nua nó feabhsaithe go suntasach", next: "ei_hire_plan" },
       { label: "No — this is operational or process-focused growth", labelGa: "Níl — tá fás oibríochtúil nó próisis-dírithe ann", next: "ei_project_size" },
@@ -179,6 +205,15 @@ export const TREE: Record<string, TreeNode> = {
     type: "question",
     question: "Are you looking to scale the business?",
     questionGa: "An bhfuil tú ag iarraidh an gnó a scálú?",
+    hint: {
+      intro: "Scaling may involve:",
+      bullets: [
+        "Hiring staff",
+        "Increasing production capacity",
+        "Entering new markets",
+        "Investing in operational systems",
+      ],
+    },
     options: [
       { label: "Yes — we want to grow capacity, staff, or markets", labelGa: "Sea — táimid ag iarraidh acmhainneacht, foireann, nó margaí a fhás", next: "leo_digital_project" },
       { label: "No — we need advice, training, or strategic support", labelGa: "Níl — teastaíonn comhairle, oiliúint, nó tacaíocht straitéiseach uainn", next: "result_training_mentoring" },
