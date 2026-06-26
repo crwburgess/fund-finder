@@ -244,11 +244,11 @@ export const TREE: Record<string, TreeNode> = {
   leo_project_size: {
     id: "leo_project_size",
     type: "question",
-    question: "Is the project relatively small in scale (typically under €300k)?",
-    questionGa: "An bhfuil do thionscadal beag ar scála (de ghnáth faoi bhun €300k)?",
+    question: "Do you need to move quickly?",
+    questionGa: "An gá duit gluaiseacht go tapa?",
     options: [
-      { label: "Yes — it is a focused, fast-moving project", labelGa: "Sea — tá sé tapa agus dírithe", next: "result_agile_innovation" },
-      { label: "No — it is a larger investment", labelGa: "Níl — is infheistíocht níos mó é", next: "result_data2sustain_edih" },
+      { label: "Yes — we have a project budget under €300k and need to respond quickly to a market opportunity", labelGa: "Sea — tá buiséad tionscadail faoi bhun €300k againn agus ní mór dúinn freagairt go tapa do dheis margaidh", next: "result_agile_innovation" },
+      { label: "No — we want to test technologies through a pilot before committing", labelGa: "Níl — táimid ag iarraidh teicneolaíochtaí a thástáil trí phíolóta sula dtiomnóimid", next: "result_data2sustain_edih" },
     ],
   },
 
