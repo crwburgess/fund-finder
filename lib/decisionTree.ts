@@ -127,9 +127,8 @@ export const TREE: Record<string, TreeNode> = {
     question: "Is your innovation project relatively small in scale (typically under €300k)?",
     questionGa: "An bhfuil do thionscadal nuálaíochta beag ar scála (de ghnáth faoi bhun €300k)?",
     options: [
-      { label: "Yes — it is a focused, fast-moving project", labelGa: "Sea — tá sé tapa agus dírithe", next: "result_agile_innovation" },
+      { label: "Yes — it is a focused, fast-moving project", labelGa: "Sea — tá sé tapa agus dírithe", next: "ei_test_ai_established" },
       { label: "No — it is a large-scale R&D programme", labelGa: "Níl — is clár R&D mórscála é", next: "result_rdi" },
-      { label: "Not sure — we need to explore our options first", labelGa: "Níl mé cinnte — ní mór dúinn ár roghanna a iniúchadh ar dtús", next: "ei_test_ai_established" },
     ],
   },
 
@@ -151,7 +150,7 @@ export const TREE: Record<string, TreeNode> = {
     questionGa: "An dteastaíonn uait AI, sonraí, nó teicneolaíochtaí digiteacha ardleibhéil a thástáil sula dtiomnóidh tú infheistíocht níos mó?",
     options: [
       { label: "Yes — we want to run a pilot before fully committing", labelGa: "Sea — táimid ag iarraidh píolóta a reáchtáil sula dtiomnóimid go hiomlán", next: "result_data2sustain" },
-      { label: "No — we are ready to implement digital tools now", labelGa: "Níl — táimid réidh uirlisí digiteacha a chur i bhfeidhm anois", next: "result_grow_digital" },
+      { label: "No — we are ready to implement digital tools now", labelGa: "Níl — táimid réidh uirlisí digiteacha a chur i bhfeidhm anois", next: "result_exploring_innovation" },
     ],
   },
 
@@ -237,8 +236,19 @@ export const TREE: Record<string, TreeNode> = {
     question: "Do you want to test AI or advanced digital technologies before committing to a larger investment?",
     questionGa: "An dteastaíonn uait AI nó teicneolaíochtaí digiteacha ardleibhéil a thástáil sula dtiomnóidh tú infheistíocht níos mó?",
     options: [
-      { label: "Yes — we want to run a pilot first", labelGa: "Sea — táimid ag iarraidh píolóta a reáchtáil ar dtús", next: "result_data2sustain_edih" },
+      { label: "Yes — we want to run a pilot first", labelGa: "Sea — táimid ag iarraidh píolóta a reáchtáil ar dtús", next: "leo_project_size" },
       { label: "No — we want to implement digital tools now", labelGa: "Níl — táimid ag iarraidh uirlisí digiteacha a chur i bhfeidhm anois", next: "result_grow_digital" },
+    ],
+  },
+
+  leo_project_size: {
+    id: "leo_project_size",
+    type: "question",
+    question: "Is the project relatively small in scale (typically under €300k)?",
+    questionGa: "An bhfuil do thionscadal beag ar scála (de ghnáth faoi bhun €300k)?",
+    options: [
+      { label: "Yes — it is a focused, fast-moving project", labelGa: "Sea — tá sé tapa agus dírithe", next: "result_agile_innovation" },
+      { label: "No — it is a larger investment", labelGa: "Níl — is infheistíocht níos mó é", next: "result_data2sustain_edih" },
     ],
   },
 
