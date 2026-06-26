@@ -346,7 +346,7 @@ export const TREE: Record<string, TreeNode> = {
     organisation: "Local Enterprise Office (LEO)",
     fund: "Business Expansion Grant",
     description: "Our business is already trading and we are looking to grow by increasing capacity, hiring staff, purchasing equipment, or entering new markets.",
-    url: "https://www.localenterprise.ie/Discover-Business-Supports/Grants/Business-Expansion-Grant/",
+    url: "https://www.localenterprise.ie/discover-business-supports/financial-supports/business-expansion-grant/",
     agencyKeywords: ["business expansion", "increasing capacity", "hiring staff", "new markets", "local growth", "job retention"],
   },
 
@@ -356,7 +356,7 @@ export const TREE: Record<string, TreeNode> = {
     organisation: "Local Enterprise Office (LEO)",
     fund: "Data2Sustain – EDIH Voucher Support",
     description: "We want to test AI, data analytics, or digital technologies through pilot projects before committing to a larger innovation investment.",
-    url: "https://www.localenterprise.ie/",
+    url: "https://www.localenterprise.ie/discover-business-supports/digital-supports/",
     agencyKeywords: ["AI pilot", "data analytics", "EDIH", "digital technologies", "test before invest", "digital transformation"],
   },
 
@@ -366,7 +366,7 @@ export const TREE: Record<string, TreeNode> = {
     organisation: "Local Enterprise Office (LEO)",
     fund: "Grow Digital Voucher",
     description: "We want to improve our digital capabilities by implementing systems such as e-commerce, CRM, automation tools, or cybersecurity solutions.",
-    url: "https://www.localenterprise.ie/",
+    url: "https://www.localenterprise.ie/discover-business-supports/digital-supports/",
     agencyKeywords: ["digital capabilities", "e-commerce", "CRM", "automation", "cybersecurity", "digital sales"],
   },
 
